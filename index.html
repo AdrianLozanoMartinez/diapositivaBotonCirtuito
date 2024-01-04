@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones - Adrián L.M.</title>
+    <!-- Hoja de estilo -->
+    <link rel="stylesheet" href="./estilo.css" media="screen" role="Aplicar estilo">
+    <!-- JavaScript para el CANVA -->
+    <script src="./javascript.js"></script> 
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <!-- Logo -->
+            <img src="./imagen/10_logo.svg" alt="logo" id="logo">
+            <!-- Título Cabecera -->
+            <h1 id="tituloCabecera">Adrián Lozano Martínez</h1>
+            <!-- Título de la empresa -->
+            <h2 id="empresa"><b>Lozano's Cars</b></h2>
+            <!-- Foto -->
+            <img src="./imagen/foto.jpg" alt="foto" id="foto">
+        </header>
+        
+        <main class="contenidoPrincipal">
+            <section class="ejercicio2">
+                <article>
+                    <!-- Imagen efecto POLAROID -->
+                    <img src="./imagen/coche1.jpg" alt="coche1" class="coche1">
+                    <img src="./imagen/coche2.jpg" alt="coche2" class="coche2">
+                    <img src="./imagen/coche3.jpg" alt="coche3" class="coche3">
+                    <img src="./imagen/coche4.jpg" alt="coche4" class="coche4">
+                </article>
+            </section>
+            <br>
+            <section class="ejercicio5">
+                <article>  
+                    <!-- CANVA mostrar -->
+                    <canvas id="coches_canvas" width="1000" height="800">
+                        Su navegador no soporta el elemento canvas.
+                    </canvas>     
+                    
+                    <!-- Canva botón -->
+                    <canvas id="boton" width="200" height="90" onclick="movimiento()" class="mano-abierta">
+                        Su navegador no soporta el elemento canvas.
+                    </canvas>    
+                </article>
+            </section>
+            <section class="ejercicio6">
+                <article>
+                    <!-- EFECTO SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width=900 height=600>
+    
+                        <!-- TRAZO PERSONA -->
+                        <path d="m15,30 v180 h135 v60 h85 v150 h-100" style="stroke:OrangeRed; stroke-width:3; fill:none;"></path>
+                        <!-- Usando medidas relativas(letras minúsculas), indicamos donde comenzará (m) en la posición x (horizontal - m150) y en la posición y (vertical - 190)-->
+                        <!-- h:línea recta horizontal y b:vertical. No usamos z para que se pare donde acabe la animación y no sea infinito  -->
+
+                        <!-- PERSONA que se van a mover -->
+                        <circle id="persona" cx=15 cy=15 r=5 stroke="OrangeRed" stroke-width=2 fill="Coral">
+                            <!-- ANIMACIÓN comenzará cuando hagamos click en la pelota id="persona"-->
+                            <animateMotion id="animacion_1" begin="persona.click"  path="m15,15 h-15 v180 h135 v60 h85 v150 h-100";  dur="3s"  repeatCount="1">
+                                <!-- id="animacion_1": Para indicar a la siguiente animación que empiece cuando termine esta-->
+                                <!-- begin="persona.click": Selecciona el id="persona" que es el círculo 
+                                    path: Ruta que seguirá
+                                    dur="3s": Tiempo que tardará en hacer el camino
+                                    repeatCount="1": Repetir la orden/vuelta -->
+                            </animateMotion> 
+                        </circle>
+                        
+                        
+                        <!-- TRAZO COCHE -->
+                        <path d="m30,40 h120 v155 h-125 v160 h125 v150 h15" style="stroke:blue; stroke-width:3; fill:none;"></path>
+
+                        <!-- COCHE que se van a mover -->
+                        <rect id="coche" width="40" height="20" fill="blue" stroke="black" stroke-width=2 x=30 y=30 >
+                            <!-- ANIMACIÓN comenzará cuando hagamos click en la pelota id="persona"-->
+                            <animateMotion id="animacion_2" begin="animacion_1.end"  path="m-15,3 h120 v155 h-125 v160 h125 v150 h15";  dur="3s"  repeatCount="1" fill="freeze">
+                                <!--end para que empiece cuando acabe animacion_1 y freeze para que se quede en el último movimiento -->
+                            </animateMotion> 
+                        </rect>
+
+                        <!-- Dibujamos los EDIFICIOS -->
+                        <rect width="100" height="120"  fill="YellowGreen" stroke="black" stroke-width=2 x=25 y=60 />
+                        <!-- fill: Color de fondo, stroke: color del borde, x: Alinear horizontalmente e y: Alinear verticalmente -->
+                        <rect width="100" height="120"  fill="green" stroke="black" stroke-width=2 x=165 y=110 />
+                        <rect width="100" height="120"  fill="lightblue" stroke="black" stroke-width=2 x=40 y=225 />
+                        <rect width="100" height="80"  fill="black" stroke="black" stroke-width=2 x=35 y=370 />
+                        <rect width="50" height="100"  fill="red" stroke="black" stroke-width=2 x=165 y=280 />
+                        <rect width="100" height="120"  fill="orange" stroke="black" stroke-width=2 x=165 y=430 />
+                        
+                        <text x=400 y=100 font-family="Verdana" font-size="50">Marbella (Málaga)</text>
+                        <animate begin="animacion_2.end" attributeType="CSS" attributeName="fill" to="orange" dur="1s" fill="freeze"  />
+                    </svg> 
+                </article>
+            </section>
+        </main>
+        
+        <footer>
+            <h1 id="tituloPie">I.E.S. Cristóbal de Monroy</h1>
+        </footer>
+    </div>
+</body>
+</html>

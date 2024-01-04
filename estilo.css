@@ -1,0 +1,388 @@
+/*--EJERCICIO 1--*/
+
+/************************************************GRID GENERAL********************************************************************************/
+.contenedor{
+    /*Coge todo el espacio*/
+    width: 100%;
+    /*Maquetar - GRID GENERAL*/
+    display: grid;
+    /*Espacio entre bordes*/
+    grid-gap: 1%;
+    /*Definimos las columnas*/ 
+    grid-template-columns: repeat(4, 1fr); 
+    /*Definimos filas*/
+    grid-template-rows: repeat(4, auto); 
+    /*Margen inferior*/
+    margin-bottom: 5%;
+    /*Margen derecha*/
+    margin-right: 2%;
+}
+
+/*Color de fondo y bordes redondeados de todo los espacios*/
+.contenedor header,
+.contenedor .contenidoPrincipal,
+.contenedor footer{
+    /*Color del fondo*/
+    background-color:rgb(223, 223, 223);
+    /*Bordes redondeados*/
+    border-radius: 1vh;
+}
+
+.contenedor header{
+    /************************************************GRID GENERAL********************************************************************************/
+    grid-column-start: 1;/*Coge la columna de donde empieza, en este caso en el 1º*/
+    grid-column-end: 5; /*Coge la columna de donde acaba, en este caso el 5*/
+    grid-row-start: 1; /*Coge la fila donde empieza, en este caso el 1*/
+    grid-row-end: 2; /*Coge la fila donde acaba, en este caso el 2*/
+
+    /*Altura en VH para que sea proporcional al tamaño*/
+    height: 20vh;
+
+    /************************************************GRID ESPECÍFICOS********************************************************************************/
+    display:grid;
+    column-gap: 2%;
+    /*Divide en 3 columnas*/
+    grid-template-columns: 25% 25% 25% 25%;
+    /*Solo tiene una fila*/
+    grid-template-rows: 100%;
+    /*Se divide el área en 3 columnas y 1 fila, se asigna letra que luego definimos que va en cada lugar que ocupa dichas letras*/
+    grid-template-areas:"a b c d";
+    width: 100%;
+}
+
+.contenedor .contenidoPrincipal{
+    /*Ocupa  las 4 columnas*/
+    grid-column: span 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    width: 100%;
+    height: 320vh;
+}
+
+.contenedor footer{
+    grid-column: span 4; 
+    grid-row-start: 4;
+    grid-row-end: 5;
+    height: 12vh;
+}
+
+#foto{
+    grid-area: d;
+    align-self: center;
+    margin-left: 10vh;
+    width: 20vh;
+    border-radius: 40%;
+    border: 1vh rgb(0, 0, 0) solid;
+}
+
+#tituloCabecera{
+    grid-area: a;
+    align-self: center;
+    margin-left: 7vh;
+    width: 100%;
+}
+
+/*--EJERCICIO 2--*/
+
+/*Efecto polaroid*/
+.coche1, .coche2, .coche3, .coche4 {
+    background-color:white; /*Fondo blanco*/
+    padding:3vh 3vh 13vh 3vh; /*Margen para que se vea el blanco alrededor*/
+    border:1vh solid #BFBFBF; /*Borde*/
+    box-shadow:10vh 10vh 30vh rgba(0, 0, 0, 0.8); /*Sombra que hace apariencia de 3D*/  
+    width: 50vh; /*Tenemos que darle tamaño para que funcione el scale*/
+   
+}
+
+
+.coche1{
+    transform:rotate(10deg) scale(0.3) translate(120vh) skew(2deg, 3deg); /*rotate: gira a la derecha, scale: amplia/disminuye de tamaño en una dirección, translate: mueve la imagen a la derecha, skew: deforma la imagen*/
+    -ms-transform:rotate(10deg) scale(0.3) translate(120vh) skew(2deg, 3deg); /* IE9 */
+    -webkit-transform:rotate(10deg) scale(0.3) translate(120vh) skew(2deg, 3deg); /* Safari y Chrome */
+    -moz-transform:rotate(10deg) scale(0.3) translate(120vh) skew(2deg, 3deg); 
+} 
+
+.coche2{
+    transform:rotate(-5deg) scale(-0.5) translate(-1vh) skewX(-20deg); /*rotate: gira a la izquierda, scale: amplia/disminuye de tamaño en otra dirección, translate: mueve la imagen a la izquierda, skewX: deforma la imagen de forma horizontal*/
+    -ms-transform:rotate(-5deg) scale(-0.5) translate(-1vh) skewX(-20deg); /* IE9 */
+    -webkit-transform:rotate(-5deg) scale(-0.5) translate(-1vh) skewX(-20deg); /* Safari y Chrome */
+    -moz-transform:rotate(-5deg) scale(-0.5) translate(-1vh) skewX(-20deg); 
+}
+
+.coche3{
+    transform:rotate(-10deg) scale(0.8) translate(-25vh) skewY(-20deg); /*skewY: deforma la imagen de forma vertical*/
+    -ms-transform:rotate(-10deg) scale(0.8) translate(-25vh) skewY(-20deg); /* IE9 */
+    -webkit-transform:rotate(-10deg) scale(0.8) translate(-25vh) skewY(-20deg); /* Safari y Chrome */
+    -moz-transform:rotate(-10deg) scale(0.8) translate(-35vh) skewY(-20deg); 
+}
+
+.coche4{
+    transform:rotate(-20deg) scale(1) translate(30vh) skewY(20deg); /*skewY: deforma la imagen de forma vertical en sentido contrario del positivo*/
+    -ms-transform:rotate(-20deg) scale(1) translate(30vh) skewY(20deg); /* IE9 */
+    -webkit-transform:rotate(-20deg) scale(1) translate(30vh) skewY(20deg); /* Safari y Chrome */
+    -moz-transform:rotate(-20deg) scale(1) translate(30vh) skewY(20deg); 
+}
+
+
+.coche1:active, .coche2:active, .coche3:active, .coche4:active{
+    /*Para que la diapositiva se ponga delante de todos*/
+    position: relative;
+    z-index: 5;
+}
+
+
+.coche1:active{
+    transition-property: all; /*Afecte a todos los efectos*/
+    transition-duration: 2s; /*Dure 2 segundos*/
+    transition-timing-function: linear; /*Sea lineal*/
+    transition-delay:0.5s; /*Atrasamos un poco el movimiento, medio segundo*/
+    
+    /*La situamos en el centro y la ampliamos*/
+    transform:translate(70vh) scale(2); 
+    -ms-transform:translate(70vh) scale(2); 
+    -webkit-transform:translate(70vh) scale(2); 
+    -moz-transform:translate(70vh) scale(2);   
+    
+    /*Filtro*/
+    filter: invert(90%);
+}
+
+.coche2:active{
+    transition-property: all; 
+    transition-duration: 1.5s; 
+    transition-timing-function: linear; 
+    transition-delay:0.5s; 
+    
+    /*La situamos en el centro y la ampliamos*/
+    transform:translate(10vh) scale(1.8); 
+    -ms-transform:translate(10vh) scale(1.8); 
+    -webkit-transform:translate(10vh) scale(1.8); 
+    -moz-transform:translate(10vh) scale(1.8);   
+    
+    /*Filtro*/
+    filter: contrast(200%);
+}
+
+.coche3:active{
+    transition-property: all; 
+    transition-duration: 1.2s; 
+    transition-timing-function: linear; 
+    transition-delay:0.5s; 
+    
+    /*La situamos en el centro y la ampliamos*/
+    transform:translate(-40vh) scale(1.8); 
+    -ms-transform:translate(-40vh) scale(1.8); 
+    -webkit-transform:translate(-40vh) scale(1.8); 
+    -moz-transform:translate(-40vh) scale(1.8);   
+    
+    /*Filtro*/
+    filter: brightness(2.4);
+}
+
+.coche4:active{
+    transition-property: all; 
+    transition-duration: 1s; 
+    transition-timing-function: linear; 
+    transition-delay:0.5s; 
+    
+    /*La situamos en el centro y la ampliamos*/
+    transform:translate(80vh, -50vh) scale(1.9); 
+    -ms-transform:translate(80vh, -50vh) scale(1.9); 
+    -webkit-transform:translate(80vh, -50vh) scale(1.9); 
+    -moz-transform:translate(80vh, -50vh) scale(1.9);   
+    
+    /*Filtro*/
+    filter: sepia(100%);
+}
+
+
+/*--EJERCICIO 3--*/
+
+#logo{ 
+    width: 10vh;
+    /*Lo ponemos a la izquierda*/
+    position: absolute;
+
+    align-self: center; /*Centramos*/
+
+    /*Animación*/
+    animation-name: logo; /*Nombre del @keyframes*/
+    animation-duration: 6s; /*Duración del efecto*/
+}
+
+
+@keyframes logo { /*Nombre del efecto*/
+    0% {  /*Inicio*/
+        left: 100%;    /*Lado izquierdo*/
+        transform: scale(0.1); /*Tamaño a la mitad*/
+        -ms-transform: scale(0.1); 
+        -webkit-transform: scale(0.1); 
+        -moz-transform: scale(0.1);   
+        
+    } 
+    50% { /*Mitad*/
+        left: 50%; /*Centro*/
+        transform: scale(2); /*El doble de tamaño*/
+        -ms-transform: scale(2); 
+        -webkit-transform: scale(2); 
+        -moz-transform: scale(2);   
+      
+       
+    } 
+    100% { /*Final*/
+        left: 0; /*Lado derecho*/
+        transform: scale(1); /*Tamaño real*/
+        -ms-transform: scale(1); 
+        -webkit-transform: scale(1); 
+        -moz-transform: scale(1);   
+        
+    }
+    
+}
+
+#empresa{
+    margin-left: 65%;
+    align-self: center;  
+    font-size: 5vh; 
+    position: relative;
+    width: 100%;
+    color: rgb(0, 194, 145);
+    
+    /*Animación*/
+    animation-name: empresa; 
+    animation-duration: 6s; /*Mismo tiempo que el anterior para que vayan a la par*/
+}
+
+
+@keyframes empresa { 
+    0%{
+        filter: opacity(0); /*Ocultar en el 1º tramo, para que no aparezca hasta que más adelante pase el logo */
+    }
+
+    25%{
+        filter: opacity(0);  /*Ocultar en el 2º tramo, lo usamos para que aparezca al ponerse delante el logo*/
+    } 
+
+    50% {  
+        /*Comenzamos en el centro porque estaba marcado de antes (align-self: center;), posición inicial*/
+        transform: translate(0,1vh);
+        -ms-transform: translate(0,1vh); 
+        -webkit-transform: translate(0,1vh); 
+        -moz-transform: translate(0,1vh);   
+        color: green;
+    } 
+
+    75%{
+        transform: translate(0,7vh); /*Bajamos el título usando translate(x,y)*/
+        -ms-transform: translate(0,7vh); 
+        -webkit-transform: translate(0,7vh); 
+        -moz-transform: translate(0,7vh); 
+        color: red;
+    } 
+
+    100% {
+        color: blue;
+    }
+    
+}
+
+/*Animación*/
+#foto  {
+    animation-name: foto;
+    animation-duration: 15s; /*15 segundo en acabar la secuencia*/
+    animation-timing-function: ease-in-out; /*Empieza y termina lento*/
+    animation-iteration-count: infinite; /*Nunca acabará*/
+    animation-direction: normal; /*Ir a la secuencia marcada*/
+}
+
+
+@keyframes foto {
+    0% { /*Inicio*/
+        border: 1vh solid; /*Borde sólido*/
+        filter: contrast(400%); /*Contraste*/
+    }
+    25% {/*Despúes del inicio y antes de la mitad del tiempo*/
+        transform: rotate3d(1,0,0,360deg) translate3d(10vh,10vh,0vh); /*Gira y se mueve en 3D*/
+        -ms-transform: rotate3d(1,0,0,360deg) translate3d(10vh,10vh,0vh); 
+        -webkit-transform: rotate3d(1,0,0,360deg) translate3d(10vh,10vh,0vh); 
+        -moz-transform: rotate3d(1,0,0,360deg) translate3d(10vh,10vh,0vh);   
+        border: 1vh solid; 
+        filter: grayscale(100%); /*Escala de grises*/
+    }
+    50%{ /*Mitad*/
+          transform: scale3d(2,2,3) rotate3d(0,0,0,360deg); /*Amplia la imagen y gira en 3D*/
+          -ms-transform: scale3d(2,2,3) rotate3d(0,0,0,360deg); 
+          -webkit-transform: scale3d(2,2,3) rotate3d(0,0,0,360deg); 
+          -moz-transform: scale3d(2,2,3) rotate3d(0,0,0,360deg); 
+          border: 1vh double; /*Borde dobles*/
+          filter: sepia(100%); /*Sepia*/
+    }
+    75% {/*Después de la mitad y antes del final*/
+        transform: rotate3d(0,1,0,180deg) translate3d(10vh,10vh,0vh) scale3d(3,4,2); /*Gira, se mueve y amplia en 3D*/
+        -ms-transform: rotate3d(0,1,0,180deg) translate3d(10vh,10vh,0vh) scale3d(3,4,2); 
+        -webkit-transform: rotate3d(0,1,0,180deg) translate3d(10vh,10vh,0vh) scale3d(3,4,2); 
+        -moz-transform: rotate3d(0,1,0,180deg) translate3d(10vh,10vh,0vh) scale3d(3,4,2); 
+        border: 1vh double;
+        filter: invert(80%); /*Invierte colores*/
+    }
+    100% {/*Final*/
+        transform:translate3d(0vh,0vh,0vh) rotate3d(0,0,0); /*Se mueve y gira en 3D*/
+        -ms-transform: translate3d(0vh,0vh,0vh) rotate3d(0,0,0); 
+        -webkit-transform: translate3d(0vh,0vh,0vh) rotate3d(0,0,0); 
+        -moz-transform: translate3d(0vh,0vh,0vh) rotate3d(0,0,0); 
+        border: 1vh double;
+    }
+    
+}
+
+/*Ejercicio 3*/
+#tituloPie{
+    align-self: center;
+    width: 25%; 
+}
+
+#tituloPie{
+    animation-name: tituloPie;
+    animation-duration: 5s; /*5 segundo en acabar la secuencia*/
+    animation-timing-function: ease-in-out; /*Empieza y termina lento*/
+    animation-iteration-count: infinite; /*Nunca acabará*/
+    animation-direction: alternate; /*Ir a la secuencia marcada*/
+}
+
+@keyframes tituloPie{
+    form{
+        transform: translate(-1000vh);
+        -ms-transform: translate(-1000vh); 
+        -webkit-transform: translate(-1000vh); 
+        -moz-transform: translate(-1000vh);   
+    }
+    to{
+        transform: translate(160vh);
+        -ms-transform: translate(160vh); 
+        -webkit-transform: translate(160vh); 
+        -moz-transform: translate(160vh);   
+        background-color: rgb(255, 130, 47);
+    }
+}
+
+
+/***********************************************************************CANVA********************************************************************************************/
+/* Fondo y borde del canvas*/
+#coches_canvas, #canvas_3{ 
+    border: solid 0.5vh #000000; 
+    background: #d0f8dc;
+}
+
+/* Botón */
+#boton{ 
+    border: solid 1vh #000000; 
+    background:rgb(0, 255, 13);
+}
+
+/* Cursor */
+.mano-abierta {
+    cursor: -webkit-grab; 
+    cursor: grab;
+  }
+
+
